@@ -53,8 +53,24 @@ def detail(request, username, image_id):
         if img.image_owner == username:
             response = f"Here is the fingerprint of image {image_id}."  
         else:
-            response = f"User {username} does not have permission to view image {image_id}."
+            response = f"User {username} does not have permission to view the image {image_slug}."
     except Image.DoesNotExist:
         raise Http404(f"Image {image_id} does not exist.")
 
     return render(request, "imgrepo/detail.html", {'img' : img})
+
+def delete(request, username, image_id):
+    try:
+        # Will throw an Image.DoesNotExist error if not found
+        img = Image.objects.get(pk=image_id) 
+
+        if img.image_owner == username:
+            slug = img.image_slug
+            img.delete()
+            response = f"The image {slug} has been successfully deleted."  
+        else:
+            response = f"User {username} does not have permission to delete the image {img.image_slug}."
+        
+        return HttpResponse(response)
+    except Image.DoesNotExist:
+        raise Http404(f"Image #{image_id} does not exist.")

@@ -8,6 +8,10 @@
     {% load static %}
     <img src="{{ img.image_src.url }}" alt="{{ img.image_slug }}" style="max-width:90vw;"/>
 
+    <form action="{% url 'delete_image' user.username img.id %}" method='POST'>
+        {% csrf_token %}
+        <button type="submit">Delete Image</button>
+    </form>
 {% else %}
     <p>No image has been provided</p>
 {% endif %}
