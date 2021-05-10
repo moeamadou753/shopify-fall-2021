@@ -10,7 +10,7 @@ class Image(models.Model):
     image_owner = models.CharField(max_length=30)
     image_slug = models.SlugField(max_length=200)
     image_permissions = models.CharField(max_length=1, choices=[('+', 'PUBLIC'), ('-', 'PRIVATE')], default='+')
-    image_src = models.ImageField(upload_to='images/')
+    image_src = models.ImageField(upload_to='media/images/')
     pub_date = models.DateTimeField('date published', auto_now_add=True)
 
     objects = ImageManager()
