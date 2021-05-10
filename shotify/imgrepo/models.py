@@ -3,7 +3,7 @@ from django.db import models
 class ImageManager(models.Manager):
     def create_image(self, owner, title, slug, permissions, src, pub_date):
         image = self.create(owner=owner, title=title, slug=slug, permissions=permissions, src=src, pub_date=pub_date)
-        # do something with the book
+        # do something with the image
         return image
 
 class Image(models.Model):
