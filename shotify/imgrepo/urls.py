@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('accounts/register/', views.register, name='register'),
     # i.e. images/moe/
     path('<str:username>/', views.user_images, name='user_images'),
     # i.e. images/moe/3
