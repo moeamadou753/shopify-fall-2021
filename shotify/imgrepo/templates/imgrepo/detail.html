@@ -1,5 +1,13 @@
 {% if img %}
-    <p>Here is img {{ img.id }}, which shows {{ img.image_slug }}</p>
+    <a href="{% url 'index' %}">Return Home</a>
+    <h3> {{ img.image_slug}} </h3>
+    <p> Image # {{ img.id }}, owned by <b>{{ img.image_owner }}</b></p>
+    <br>
+    <br>
+
+    {% load static %}
+    <img src="{{ img.image_src.url }}" alt="{{ img.image_slug }}" style="max-width:90vw;"/>
+
 {% else %}
     <p>No image has been provided</p>
 {% endif %}
