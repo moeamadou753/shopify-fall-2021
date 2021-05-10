@@ -5,12 +5,16 @@ An image repository app prepared by Moe Amadou for the Fall 2021 Shopify Backend
 To use Shotify, you will have to create an account or log in using one of the sandbox accounts below:
 
 #### Account 1 Creds
+```
 username: moe
 password: 123456
+```
 
 #### Account 2 Creds
+```
 username: paul
 password: Mynameispaul1
+```
 
 After logging in, you will be taken to a page that lists all of the images currently stored in the repository as well as a form to add an image.
 
