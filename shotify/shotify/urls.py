@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('imgrepo/', include('imgrepo.urls')),
+    path('repo/', include('imgrepo.urls')),
     path('admin/', admin.site.urls),
 ]
