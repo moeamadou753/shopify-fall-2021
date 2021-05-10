@@ -1,7 +1,7 @@
 {% if img_list %}
     <ul>
         {% for img in img_list %}
-        <li><a href="/repo/images/{{img.image_owner}}/{{img.id}}/">{{img.image_slug}}</a></li>
+        <li><a href="{% url 'detail' img.image_owner img.id %}">{{img.image_slug}}</a></li>
         {% endfor %}
     </ul>
 {% else %}
