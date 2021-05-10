@@ -1,0 +1,7 @@
+{% if msg %}
+<p>{{ msg }}</p>
+{% else %}
+<p>Internal Server Error.</p>
+{% endif %}
+<br>
+<a href="{% url 'index' %}">Return Home</a>

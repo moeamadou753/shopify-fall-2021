@@ -71,6 +71,6 @@ def delete(request, username, image_id):
         else:
             response = f"User {username} does not have permission to delete the image {img.image_slug}."
         
-        return HttpResponse(response)
+        return render(request, "imgrepo/message.html", {'msg': response})
     except Image.DoesNotExist:
         raise Http404(f"Image #{image_id} does not exist.")
