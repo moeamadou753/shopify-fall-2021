@@ -6,12 +6,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .models import Image, ImageManager
+from .forms import UploadImageForm
+
 from django.shortcuts import redirect
 
+@login_required(login_url="/accounts/login/")
 def index(request):
     img_list = Image.objects.order_by('-pub_date')
     template = loader.get_template('imgrepo/index.html')
-    context = {'img_list': img_list}
+    
+
+    if request.method == 'POST':
+        form = UploadImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            print("saved")
+            return redirect('index')
+    else:
+        form = UploadImageForm()
+
+    context = {'img_list': img_list, 'form': form}
+
     return HttpResponse(template.render(context,request))
 
 def register(request):
@@ -43,4 +58,3 @@ def detail(request, username, image_id):
         raise Http404(f"Image {image_id} does not exist.")
 
     return render(request, "imgrepo/detail.html", {'img' : img})
-    

@@ -11,8 +11,35 @@
     {% else %}
         <p>No images are available.</p>
     {% endif %}
-{% else %}
-    <p>You are not logged in. </p> <br/>
-    <a href="{% url 'login' %}">Log In</a>
 
+    <h3>Add an Image</h3>
+    <form enctype="multipart/form-data" action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+
+        <label for="image_owner">Owner</label>
+        <input type="text" name="image_owner" value="{{ user.username }}" readonly>
+        <br>
+        <br>
+
+        <label for="image_slug">Title</label>
+        <input type="text" name="image_slug" id="image_slug" value="sartorial_shotify_shot">        
+        <br>
+        <br>
+
+        <label for="image_permissions">Permissions</label> 
+        <select id ="image_permissions" name="image_permissions">
+            <option value="+">Public</option>
+            <option value="-">Private</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="image_src">Image File</label>
+        <br>
+        <input type="file" id="image_src" name="image_src" accept="image/*">     
+        <br>
+        <br>
+
+        <input type="submit" value="Add Image">
+    </form>
 {% endif %}
